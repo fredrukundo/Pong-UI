@@ -20,7 +20,7 @@ export class Ball {
     }
   
     draw(ctx: CanvasRenderingContext2D) {
-      ctx.fillStyle = '#33ff00';
+      ctx.fillStyle = '#fff';
       ctx.beginPath();
       ctx.arc(this.pos.x, this.pos.y, this.radius, 0, Math.PI * 2);
       ctx.fill();
@@ -69,7 +69,7 @@ export class Ball {
     }
   
     draw(ctx: CanvasRenderingContext2D) {
-      ctx.fillStyle = '#33ff00';
+      ctx.fillStyle = '#fff';
       ctx.fillRect(this.pos.x, this.pos.y, this.width, this.height);
     }
   }
