@@ -5,29 +5,29 @@ import Scoreboard from './Scoreboard';
 import { Ball, Paddle, checkCollisions } from '@/utils/physics';
 
 function drawGamePlayground(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement) {
-    // Clear the canvas
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-  
-    // Set styles for the playground elements
-    ctx.strokeStyle = "#33ff00"; // Green color for the playground
-    ctx.lineWidth = 2;
-  
-    // Draw the centerline
-    const centerX = canvas.width / 2;
-    ctx.setLineDash([10, 15]); // Dashed line
-    ctx.beginPath();
-    ctx.moveTo(centerX, 0);
-    ctx.lineTo(centerX, canvas.height);
-    ctx.stroke();
-  
-    // Draw the center circle
-    const centerY = canvas.height / 2;
-    ctx.setLineDash([]); // Remove dashes for the circle
-    ctx.beginPath();
-    ctx.arc(centerX, centerY, 50, 0, Math.PI * 2); // Circle with radius 50
-    ctx.stroke();
-  }
-  
+  // Clear the canvas
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Set styles for the playground elements
+  ctx.strokeStyle = "#fff"; // Green color for the playground
+  ctx.lineWidth = 2;
+
+  // Draw the centerline
+  const centerX = canvas.width / 2;
+  ctx.setLineDash([10, 15]); // Dashed line
+  ctx.beginPath();
+  ctx.moveTo(centerX, 0);
+  ctx.lineTo(centerX, canvas.height);
+  ctx.stroke();
+
+  // Draw the center circle
+  const centerY = canvas.height / 2;
+  ctx.setLineDash([]); // Remove dashes for the circle
+  ctx.beginPath();
+  ctx.arc(centerX, centerY, 30, 0, Math.PI * 2); // Circle with radius 50
+  ctx.stroke();
+}
+
 
 const Game = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -37,11 +37,11 @@ const Game = () => {
   useEffect(() => {
     const canvas = canvasRef.current!;
     const ctx = canvas.getContext('2d')!;
-    canvas.width =1920;
-    canvas.height = 1080;
+    canvas.width = 1024;
+    canvas.height = 480;
 
-    const paddleWidth = 20;
-    const paddleHeight = 160;
+    const paddleWidth = 10;
+    const paddleHeight = 120;
 
     const player1 = new Paddle(0, 50, 15, paddleWidth, paddleHeight);
     const player2 = new Paddle(canvas.width - paddleWidth, 30, 15, paddleWidth, paddleHeight);
@@ -95,9 +95,11 @@ const Game = () => {
   }, []);
 
   return (
-    <div className="relative ">
-      <canvas id="gameCanvas" ref={canvasRef} className="bg-black border-4 border-green-500"></canvas>
-      <Scoreboard player1Score={player1Score} player2Score={player2Score} />
+    <div className="relative bg-gray-800 border border-gray-700 rounded-lg shadow-lg p-20">
+      <div>
+        <Scoreboard player1Score={player1Score} player2Score={player2Score} />
+      </div>
+      <canvas id="gameCanvas" ref={canvasRef} className="bg-[#023a5e] border-4 border-[#074e7a34]"></canvas>
     </div>
   );
 };
