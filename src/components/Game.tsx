@@ -41,6 +41,8 @@ const Game = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [player1Score, setPlayer1Score] = useState(0);
   const [player2Score, setPlayer2Score] = useState(0);
+  const [winner, setWinner] = useState<String | null>(null); // track a winner
+  const animationFrameId = useRef<number | null>(null); // track the animation frame Id
 
   useEffect(() => {
     const canvas = canvasRef.current!;
@@ -64,6 +66,9 @@ const Game = () => {
     window.addEventListener('keyup', handleKeyUp);
 
     const gameLoop = () => {
+
+      if (winner)
+          return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       drawGamePlayground(ctx, canvas);
@@ -86,33 +91,70 @@ const Game = () => {
         ball.respawn(canvas.width, canvas.height, 'left');
       }
 
+      if (player1Score >= 3 || player2Score >= 3) {
+        setWinner(player1Score >= 3 ? 'Player 1' : 'Player 2');
+        return;
+      }
+
+
       // Draw
       player1.draw(ctx);
       player2.draw(ctx);
       ball.draw(ctx);
 
-      requestAnimationFrame(gameLoop);
+
+      animationFrameId.current = requestAnimationFrame(gameLoop);
     };
 
-    gameLoop();
+    // gameLoop();
+    animationFrameId.current = requestAnimationFrame(gameLoop);
 
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('keyup', handleKeyUp);
+      if (animationFrameId.current) cancelAnimationFrame(animationFrameId.current);
     };
-  }, []);
+  }, [player1Score, player2Score]);
+
+
+  const handleRestart = () => {
+    setPlayer1Score(0);
+    setPlayer2Score(0);
+    setWinner(null);
+
+    // Restart the game loop
+    if (animationFrameId.current === null) {
+      const canvas = canvasRef.current!;
+      const ctx = canvas.getContext('2d')!;
+      const gameLoop = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawGamePlayground(ctx, canvas);
+        animationFrameId.current = requestAnimationFrame(gameLoop);
+      };
+      animationFrameId.current = requestAnimationFrame(gameLoop);
+    }
+  };
 
   return (
     <div className="relative bg-[#022c22] border border-gray-700 rounded-lg shadow-lg p-20">
-      <div>
-        <Scoreboard 
-            player1Score={player1Score} 
-            player2Score={player2Score} 
-            player1Avator={user1.avatar}
-            player2Avator={user2.avatar}
-            />
-      </div>
-      <canvas id="gameCanvas" ref={canvasRef} className="bg-[#064e3b] border-4 border-[#074e7a34]"></canvas>
+      {winner ? (
+        <div className="absolute inset-0 bg-black bg-opacity-75 flex flex-col justify-center items-center text-white">
+          <h1 className="text-4xl font-bold mb-4">{winner} Wins!</h1>
+          <button
+            onClick={handleRestart}
+            className="px-6 py-3 bg-green-500 text-white font-bold rounded-lg hover:bg-green-700"
+          >
+            Restart Game
+          </button>
+        </div>
+      ) : null }
+      <Scoreboard
+        player1Score={player1Score}
+        player2Score={player2Score}
+        player1Avator={user1.avatar}
+        player2Avator={user2.avatar}
+      />
+    <canvas ref={canvasRef} className="bg-[#064e3b] border-4 border-[#074e7a34]"></canvas>
     </div>
   );
 };
