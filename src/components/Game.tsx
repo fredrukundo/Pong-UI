@@ -4,6 +4,14 @@ import { useEffect, useRef, useState } from 'react';
 import Scoreboard from './Scoreboard';
 import { Ball, Paddle, checkCollisions } from '@/utils/physics';
 
+const user1 = {
+  avatar: '/me.jpeg',
+};
+
+const user2 = {
+  avatar: '/bot.jpg',
+};
+
 function drawGamePlayground(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement) {
   // Clear the canvas
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -95,11 +103,16 @@ const Game = () => {
   }, []);
 
   return (
-    <div className="relative bg-gray-800 border border-gray-700 rounded-lg shadow-lg p-20">
+    <div className="relative bg-[#022c22] border border-gray-700 rounded-lg shadow-lg p-20">
       <div>
-        <Scoreboard player1Score={player1Score} player2Score={player2Score} />
+        <Scoreboard 
+            player1Score={player1Score} 
+            player2Score={player2Score} 
+            player1Avator={user1.avatar}
+            player2Avator={user2.avatar}
+            />
       </div>
-      <canvas id="gameCanvas" ref={canvasRef} className="bg-[#023a5e] border-4 border-[#074e7a34]"></canvas>
+      <canvas id="gameCanvas" ref={canvasRef} className="bg-[#064e3b] border-4 border-[#074e7a34]"></canvas>
     </div>
   );
 };
