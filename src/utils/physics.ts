@@ -92,11 +92,19 @@ export class Ball {
         dy < ball.radius + paddle.height / 2
       );
     };
-    if (collidesWithPaddle(paddle1) || collidesWithPaddle(paddle2)) {
-      const paddle = collidesWithPaddle(paddle1) ? paddle1 : paddle2;
-      const impactPoint = (ball.pos.y - paddle.pos.y) / paddle.height; // -1 (top) to 1 (bottom)
-      ball.velocity.x *= -1; // Reverse direction
-      ball.velocity.y += impactPoint * 2; // Add spin based on impact
+  
+    let hasCollided = false;
+  
+    if (!hasCollided && collidesWithPaddle(paddle1)) {
+      ball.velocity.x *= -1;
+      ball.pos.x = paddle1.pos.x + paddle1.width + ball.radius; // Adjust ball position to prevent overlap
+      hasCollided = true;
+    }
+  
+    if (!hasCollided && collidesWithPaddle(paddle2)) {
+      ball.velocity.x *= -1;
+      ball.pos.x = paddle2.pos.x - ball.radius; // Adjust ball position to prevent overlap
+      hasCollided = true;
     }
   }
   
