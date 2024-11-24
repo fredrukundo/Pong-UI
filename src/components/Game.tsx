@@ -44,15 +44,17 @@ const Game = () => {
   useEffect(() => {
     const canvas = canvasRef.current!;
     const ctx = canvas.getContext('2d')!;
-    canvas.width = window.innerWidth * 0.7;
-    canvas.height = window.innerHeight * 0.4;
+    // canvas.width = window.innerWidth * 0.7;
+    // canvas.height = window.innerHeight * 0.4;
+    canvas.width = Math.min(window.innerWidth * 0.8, 800);
+    canvas.height = Math.min(window.innerHeight * 0.4, 450);
 
     const paddleWidth = canvas.width * 0.01;
     const paddleHeight = canvas.height * 0.2;
 
     const player1 = new Paddle(0, 50, 15, paddleWidth, paddleHeight);
     const player2 = new Paddle(canvas.width - paddleWidth, 30, 15, paddleWidth, paddleHeight);
-    const ball = new Ball(canvas.width / 2, canvas.height / 2, 10, 10, 20);
+    const ball = new Ball(canvas.width / 2, canvas.height / 2, 10, 10, 10);
 
     const keysPressed: Record<string, boolean> = {};
 
@@ -141,7 +143,7 @@ const Game = () => {
       {/* Game Over Overlay */}
       {winner && (
         <div className="absolute inset-0 bg-black bg-opacity-75 flex flex-col justify-center items-center text-white">
-          <h1 className="text-4xl font-bold mb-4">{winner} Wins!</h1>
+          <h1 className="text-4xl font-bold mb-4">🎉{winner} 🎉Wins🎉</h1>
           <button
             onClick={handleRestart}
             className="px-6 py-3 text-sm md:text-base lg:text-lg bg-green-500 text-white font-bold rounded-lg hover:bg-green-900"
