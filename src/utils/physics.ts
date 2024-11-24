@@ -64,15 +64,6 @@ export class Ball {
       }
     }
   
-    // updateAI(ball: Ball, canvasHeight: number, reactionTime: number = 5) {
-    //   if (ball.velocity.x > 0) {
-    //     if (ball.pos.y > this.pos.y + this.height / 2) {
-    //       this.pos.y = Math.min(canvasHeight - this.height, this.pos.y + this.velocity);
-    //     } else {
-    //       this.pos.y = Math.max(0, this.pos.y - this.velocity);
-    //     }
-    //   }
-    // }
     updateAI(ball: Ball, canvasHeight: number, reactionTime: number = 5) {
       // Add a delay for AI reaction
       if ( ball.velocity.x > 0 && Math.random() < reactionTime / 7) {
@@ -101,11 +92,6 @@ export class Ball {
         dy < ball.radius + paddle.height / 2
       );
     };
-  
-    // if (collidesWithPaddle(paddle1) || collidesWithPaddle(paddle2)) {
-    //   ball.velocity.x *= -1.1;
-    //   ball.velocity.y *= 1.1;
-    // }
     if (collidesWithPaddle(paddle1) || collidesWithPaddle(paddle2)) {
       const paddle = collidesWithPaddle(paddle1) ? paddle1 : paddle2;
       const impactPoint = (ball.pos.y - paddle.pos.y) / paddle.height; // -1 (top) to 1 (bottom)
