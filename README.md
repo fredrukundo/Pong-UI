@@ -13,5 +13,5 @@ In this part, we will focus on the Game Part only (frontEnd using NextJS)
  npm rund dev
 
  ```
-  and then open browser `` [localhost:3000](http://localhost:3000/)
+  and then open browser  [localhost:3000](http://localhost:3000/)
 
