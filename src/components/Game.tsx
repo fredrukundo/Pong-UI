@@ -47,11 +47,11 @@ const Game = () => {
   useEffect(() => {
     const canvas = canvasRef.current!;
     const ctx = canvas.getContext('2d')!;
-    canvas.width = 1024;
-    canvas.height = 480;
-
-    const paddleWidth = 10;
-    const paddleHeight = 120;
+    canvas.width = window.innerWidth * 0.7;
+    canvas.height = window.innerHeight * 0.4;
+    
+    const paddleWidth = canvas.width * 0.01;
+    const paddleHeight = canvas.height * 0.2;
 
     const player1 = new Paddle(0, 50, 15, paddleWidth, paddleHeight);
     const player2 = new Paddle(canvas.width - paddleWidth, 30, 15, paddleWidth, paddleHeight);
@@ -74,7 +74,7 @@ const Game = () => {
       drawGamePlayground(ctx, canvas);
 
       // Update
-      player1.update(keysPressed, canvas.height);
+      player1.update(keysPressed, canvas.height, player1Score);
       player2.updateAI(ball, canvas.height);
       ball.update(canvas.width, canvas.height);
 
@@ -136,13 +136,13 @@ const Game = () => {
   };
 
   return (
-    <div className="relative bg-[#022c22] border border-gray-700 rounded-lg shadow-lg p-20">
+    <div className="relative bg-[#022c22] border border-gray-700 rounded-lg shadow-lg p-20 aspect-w-16 aspect-h-9">
       {winner ? (
         <div className="absolute inset-0 bg-black bg-opacity-75 flex flex-col justify-center items-center text-white">
           <h1 className="text-4xl font-bold mb-4">{winner} Wins!</h1>
           <button
             onClick={handleRestart}
-            className="px-6 py-3 bg-green-500 text-white font-bold rounded-lg hover:bg-green-700"
+            className="px-6 py-3 text-sm md:text-base lg:text-lg bg-green-500 text-white font-bold rounded-lg hover:bg-green-900"
           >
             Restart Game
           </button>
@@ -154,7 +154,9 @@ const Game = () => {
         player1Avator={user1.avatar}
         player2Avator={user2.avatar}
       />
-    <canvas ref={canvasRef} className="bg-[#064e3b] border-4 border-[#074e7a34]"></canvas>
+      <div className='w-full sm:max-w-2xl md:max-w-3xl lg:max-w-5xl aspect-w-16 aspect-h-9'>
+         <canvas ref={canvasRef} className="w-full h-full bg-[#064e3b] border-4 border-[#074e7a34]"></canvas>
+      </div>
     </div>
   );
 };
