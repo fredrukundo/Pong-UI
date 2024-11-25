@@ -72,8 +72,14 @@ const Game = () => {
         drawGamePlayground(ctx, canvas);
 
         // Update game elements
+
+        // for 1 vs 1 uncomment this 2 lines
+        // player1.update1(keysPressed, canvas.height, player1Score);
+        // player2.update2(keysPressed, canvas.height, player2Score);
+
+        //for bot AI
         player1.update(keysPressed, canvas.height, player1Score);
-        player2.updateAI(ball, canvas.height);
+        player2.updateAI(ball,canvas.height);
         ball.update(canvas.width, canvas.height);
 
         // Check collisions
