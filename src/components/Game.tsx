@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Scoreboard from './Scoreboard';
-import { Ball, Paddle, checkCollisions } from '@/utils/physics';
+import { Ball, Paddle, checkCollisions } from '@/utils/bot';
+// import { Ball, Paddle, checkCollisions } from '@/utils/1v1';
 
 const user1 = {
   avatar: '/me.jpeg',
@@ -44,8 +45,7 @@ const Game = () => {
   useEffect(() => {
     const canvas = canvasRef.current!;
     const ctx = canvas.getContext('2d')!;
-    // canvas.width = window.innerWidth * 0.7;
-    // canvas.height = window.innerHeight * 0.4;
+   
     canvas.width = Math.min(window.innerWidth * 0.8, 800);
     canvas.height = Math.min(window.innerHeight * 0.4, 450);
 
@@ -90,8 +90,8 @@ const Game = () => {
         }
 
         // Check for a winner
-        if (player1Score >= 3 || player2Score >= 3) {
-          setWinner(player1Score >= 3 ? 'Player 1' : 'Player 2');
+        if (player1Score >= 8 || player2Score >= 8) {
+          setWinner(player1Score >= 8 ? 'Player 1' : 'Player 2');
           return;
         }
 
