@@ -19,7 +19,7 @@ const Scoreboard: React.FC<ScoreboardProps> = ({ player1Score, player2Score, pla
                 className="w-20 h-20 rounded-full border-2 border-gray-300"
                 />
         </div>
-        <span className="text-3xl font-bold">{player1Score}</span>
+        <span className="text-3xl font-bold">{player1Score} /8</span>
       </div>
       <div className="text-3xl font-bold">
         <h1>VS</h1>
@@ -34,7 +34,7 @@ const Scoreboard: React.FC<ScoreboardProps> = ({ player1Score, player2Score, pla
                 className="rounded-full border-2 border-gray-300"
                 />
         </div>
-        <span className="text-3xl font-bold">{player2Score}</span>
+        <span className="text-3xl font-bold">{player2Score} /8</span>
       </div>
     </div>
   );
