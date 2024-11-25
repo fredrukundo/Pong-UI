@@ -15,3 +15,7 @@ In this part, we will focus on the Game Part only (frontEnd using NextJS)
  ```
   and then open your browser and type this Url:  [localhost:3000](http://localhost:3000/)
 
+  # Part 2
+
+  the part 2 will be uploaded soon
+
