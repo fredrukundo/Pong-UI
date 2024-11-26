@@ -66,7 +66,7 @@ export class Ball {
   
     updateAI(ball: Ball, canvasHeight: number, reactionTime: number = 5) {
       // Add a delay for AI reaction
-      if ( ball.velocity.x > 0 && Math.random() < reactionTime / 6.5) { // only reacts when the ball is moving toward its side (positive x-velocity)
+      if ( ball.velocity.x > 0 && Math.random() < reactionTime / 6.5) { // only reacts when the ball is moving toward its side (positive x-velocity) at this part you can also control the difficulty of AI 5 and less it's more difficult, 6,7 is medium while 10+ is so easy
         if (ball.pos.y > this.pos.y + this.height / 2) {
           this.pos.y = Math.min(canvasHeight - this.height, this.pos.y + this.velocity);
         } else {
