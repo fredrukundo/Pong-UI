@@ -17,5 +17,5 @@ In this part, we will focus on the Game Part only (frontEnd using NextJS)
 
   # Part 2
 
-  the part 2 will be uploaded soon
+  the part 2 will be uploaded soon and the backend
 
