@@ -20,7 +20,7 @@ export class Ball {
       }
 
       // cap the speed to prevent excessive difficulty
-      const maxSpeed = 13;
+      const maxSpeed = 12;
       this.velocity.x = Math.min(maxSpeed, Math.max(this.velocity.x, -maxSpeed));
       this.velocity.y = Math.min(maxSpeed, Math.max(this.velocity.y, -maxSpeed));
     }
