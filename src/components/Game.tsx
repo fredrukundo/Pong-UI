@@ -54,7 +54,7 @@ const Game = () => {
 
     const player1 = new Paddle(0, 50, 15, paddleWidth, paddleHeight);
     const player2 = new Paddle(canvas.width - paddleWidth, 30, 15, paddleWidth, paddleHeight);
-    const ball = new Ball(canvas.width / 2, canvas.height / 2, 10, 10, 10);
+    const ball = new Ball(canvas.width / 2, canvas.height / 2, 6, 6, 10);
 
     const keysPressed: Record<string, boolean> = {};
 
