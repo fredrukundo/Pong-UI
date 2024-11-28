@@ -15,7 +15,7 @@ export class Ball {
   
       // Bounce off top and bottom edges
       if (this.pos.y - this.radius <= 0 || this.pos.y + this.radius >= canvasHeight) {
-        this.velocity.y *= -1.1;
+        this.velocity.y *= -1;
       }
 
       // cap the speed to prevent excessive difficulty
