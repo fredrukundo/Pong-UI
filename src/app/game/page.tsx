@@ -53,6 +53,27 @@ export default function GameHomePage() {
             </button>
           </Link>
         </div>
+        <div
+          className="bg-[#bae6fd] text-gray-900
+        rounded-xl 
+        shadow-lg p-16
+        flex flex-col items-center hover:shadow-2xl transition transform hover:scale-105  bg-cover"
+          style={{
+            backgroundImage: "url('/two.png')",
+            justifyContent: "space-between"
+          }}
+        >
+
+          <h2 className="text-2xl font-semibold mb-2">Play tournments</h2>
+          <p className="text-center mb-4">
+            Play competitive matches with others
+          </p>
+          <Link href="/game/online">
+            <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-semibold">
+              Start Match
+            </button>
+          </Link>
+        </div>
 
       </div>
 
