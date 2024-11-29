@@ -64,7 +64,7 @@ export default function GameHomePage() {
           }}
         >
 
-          <h2 className="text-2xl font-semibold mb-2">Play tournments</h2>
+          <h2 className="text-2xl font-semibold mb-2">Play tournaments</h2>
           <p className="text-center mb-4">
             Play competitive matches with others
           </p>
