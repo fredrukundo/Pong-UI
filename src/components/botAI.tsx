@@ -156,7 +156,11 @@ const Ai = () => {
 
       {/* Canvas */}
       <div className="w-full sm:max-w-2xl md:max-w-3xl lg:max-w-5xl aspect-w-16 aspect-h-9">
-        <canvas ref={canvasRef} className="w-full h-full bg-[#064e3b] border-4 border-[#074e7a34]"></canvas>
+        <canvas ref={canvasRef} className="w-full h-full bg-[#064e3b]  bg-contain"
+         style={{
+          backgroundImage: "url('/two.png')",
+        }}
+        ></canvas>
       </div>
     </div>
   );
