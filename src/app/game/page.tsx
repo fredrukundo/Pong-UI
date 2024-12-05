@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { Card } from "@/components/ui/card";
+
 
 export default function GameHomePage() {
   return (
@@ -53,27 +55,11 @@ export default function GameHomePage() {
             </button>
           </Link>
         </div>
-        <div
-          className="bg-[#bae6fd] text-gray-900
-        rounded-xl 
-        shadow-lg p-16
-        flex flex-col items-center hover:shadow-2xl transition transform hover:scale-105  bg-cover"
-          style={{
-            backgroundImage: "url('/two.png')",
-            justifyContent: "space-between"
-          }}
-        >
+       
+      <h1 className="relative w-fit tracking-tight text-balance mt-16 font-bold !leading-tight text-white text-3xl md:text-4xl lg:text-5xl">Choose <span className='bg-green-600 px-2 text-white rounded-xl'>your</span> favorate <span className='bg-green-600 px-2 text-white rounded-xl'>Board</span></h1>
 
-          <h2 className="text-2xl font-semibold mb-2">Play tournaments</h2>
-          <p className="text-center mb-4">
-            Play competitive matches with others
-          </p>
-          <Link href="/game/online">
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-semibold">
-              Start Match
-            </button>
-          </Link>
-        </div>
+        <Card className="w-[350px]"> </Card>
+    
 
       </div>
 
