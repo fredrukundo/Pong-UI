@@ -1,5 +1,5 @@
 ## Introduction
-In this part, we will focus on the Game Part only (frontEnd using NextJS)
+In this part we will focus on the Game Part only (frontEnd using NextJS)
 
 ## The Game Structure
 1. A canvas for rendering the Game.
